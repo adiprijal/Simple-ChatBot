@@ -76,7 +76,11 @@ def chatbot(file_path):
     vectorstore = Chroma.from_documents(documents=texts, embedding=embeddings)
 
     # Initialize the LLM with the specified model and temperature
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+    llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash", 
+            temperature=0.7,
+            api_key=api_key
+        )
 
     # Create the RetrievalQA chain using the LLM and the vector store as the retriever
     # chain_type="stuff" -> This means that the retrieved chunks will be concatenated together and fed into the LLM as a single input.
